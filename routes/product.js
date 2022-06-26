@@ -37,8 +37,8 @@ router.get("/placements/pdf/:productId", getProductPhoto);
 router.get("/placements", getAllProducts);
 
 router.get("/contests/:limit",getAllContestsFromApi);
-// router.get("/contests",getAllContests);
-router.get("/contests/icons",getAllContestsIcons);
+router.get("/hackathons",getAllContests);
+router.get("/hackathons/icons",getAllContestsIcons);
 
 
 module.exports = router;
