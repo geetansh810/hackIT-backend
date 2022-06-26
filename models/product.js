@@ -63,13 +63,13 @@ const productSchema = new mongoose.Schema(
     yearStart: {
       type: Number,
       required: true,
-      maxlength: 4,
+      maxlength: 32,
       trim: true,
     },
     yearEnd: {
       type: Number,
       required: true,
-      maxlength: 4,
+      maxlength: 32,
       trim: true,
     },
 
