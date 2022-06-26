@@ -21,7 +21,7 @@ const productRoutes = require("./routes/product");
 
 // DB connection
 mongoose
-  .connect(process.env.DATABASE , {
+  .connect(process.env.DATABASE, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,

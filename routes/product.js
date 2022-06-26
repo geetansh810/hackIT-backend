@@ -10,12 +10,15 @@ const {
   getProductPhoto,
   getAllProducts,
   getAllContests,
-  getAllContestsIcons
+  getAllContestsIcons,
+  getAllContestsFromApi,
+  getContestLimit
 } = require("../controllers/product");
 
 //params
 router.param("userId", getUserById);
 router.param("productId", getProductById);
+router.param("limit", getContestLimit);
 
 //create routes
 router.post(
@@ -33,7 +36,8 @@ router.get("/placements/pdf/:productId", getProductPhoto);
 //listing route
 router.get("/placements", getAllProducts);
 
-router.get("/contests",getAllContests);
+router.get("/contests/:limit",getAllContestsFromApi);
+// router.get("/contests",getAllContests);
 router.get("/contests/icons",getAllContestsIcons);
 
 

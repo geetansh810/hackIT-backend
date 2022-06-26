@@ -2,6 +2,7 @@ const Product = require("../models/product");
 const formidable = require("formidable");
 const _ = require("lodash");
 const fs = require("fs");
+const fetch = require('node-fetch');
 
 exports.getProductById = (req, res, next, id) => {
   Product.findById(id)
@@ -132,14 +133,36 @@ exports.getAllProducts = (req, res) => {
 
 
 exports.getAllContests = (req, res) => {
-  fs.readFile("data/clist.txt",'utf8', (error, content) => {
+  fs.readFile("data/clist.txt", 'utf8', (error, content) => {
     var data = JSON.parse(content);
     res.json(data);
   })
+
+};
+
+exports.getContestLimit = (req, res, next, id) => {
+  // User.findById(id).exec((err, user) => {
+  //   if (err || !user) {
+  //     return res.status(400).json({ error: "No user found in DB" });
+  //   }
+  //   // console.log(user);
+  //   req.profile = user;
+  //   next();
+  // });
+  req.limit = id;
+  next();
+};
+
+exports.getAllContestsFromApi = (req, res) => {
+  fetch(`https://clist.by/api/v2/contest/?username=minor-project&api_key=76c4a281d8c5636fb8dab0cdd36d6c88c85fb213&limit=${req.limit}&format_time=false&order_by=-start`)
+    .then(res => res.json())
+    .then(text => {
+      res.json(text);
+    });
 };
 
 exports.getAllContestsIcons = (req, res) => {
-  fs.readFile("data/clistIcons.txt",'utf8', (error, content) => {
+  fs.readFile("data/clistIcons.txt", 'utf8', (error, content) => {
     var data = JSON.parse(content);
     res.json(data);
   })
