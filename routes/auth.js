@@ -41,6 +41,7 @@ router.get("/testRoute", isSignedIn, (req, res)=>{
 });
 
 router.get("/demo", (req, res)=>{
+  // console.log("Hellooo")
     res.send("Hello")
 });
 
