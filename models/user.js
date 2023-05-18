@@ -4,6 +4,8 @@ const crypto2 = require("crypto");
 
 const { v1: uuidv1 } = require("uuid");
 
+const { ObjectId } = mongoose.Schema;
+
 var userSchema = new mongoose.Schema(
   {
     name: {
@@ -27,8 +29,13 @@ var userSchema = new mongoose.Schema(
     },
 
     userInfo: {
-      type: String,
-      trim: true,
+      type: ObjectId,
+      ref: "Resume",
+    },
+
+    resumeDetails: {
+      type: Boolean,
+      default: false
     },
 
     encry_password: {

@@ -10,6 +10,8 @@ exports.signup = (req, res) => {
   //checks for validation errors
   const errors = validationResult(req);
 
+  console.log(req.body);
+
   if (!errors.isEmpty()) {
     return res.status(422).json({
       error: errors.array()[0].msg,
@@ -34,6 +36,7 @@ exports.signup = (req, res) => {
 };
 
 exports.signin = (req, res) => {
+  console.log("Signin");
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
@@ -67,17 +70,18 @@ exports.signin = (req, res) => {
     });
 
     //response send to frontend
-    const { _id, name, email, role } = user;
+    const { _id, name, email, role, resumeDetails } = user;
 
     return res.json({
       token,
-      user: { _id, name, email, role },
+      user: { _id, name, email, role, resumeDetails },
     });
   });
 };
 
 //sign-out the user by clearing the token from cookie
 exports.signout = (req, res) => {
+  console.log("signout");
   res.clearCookie("token");
   res.json({
     message: "User signed-out succesfully",

@@ -36,13 +36,13 @@ router.post(
 //to sign-out the user
 router.get("/signout", signout);
 
-router.get("/testRoute", isSignedIn, (req, res)=>{
-    res.json(req.auth)
+router.get("/testRoute", isSignedIn, (req, res) => {
+  res.json(req.auth)
 });
 
-router.get("/demo", (req, res)=>{
+router.get("/demo", (req, res) => {
   // console.log("Hellooo")
-    res.send("Hello")
+  res.send("Hello Backend");
 });
 
 module.exports = router;
